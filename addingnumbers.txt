@@ -1,0 +1,103 @@
+2. adding two numbers
+strings.xml
+<resources>
+ <string name="app_name">Addition</string>
+ <string name="l1">Enter the First number</string>
+ <string name="l2">Enter the Second Number</string>
+ <string name="l3">Result</string>
+ <string name="l4">Sum</string>
+</resources>
+acivity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity"
+ >
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="@string/l1"
+ android:layout_marginVertical="30dp"
+ android:layout_marginLeft="25dp"
+ />
+ <EditText
+ android:id="@+id/t1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+android:inputType="number"
+ android:layout_marginVertical="60dp"
+ android:layout_marginLeft="25dp"
+ />
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginVertical="120dp"
+ android:layout_marginLeft="25dp"
+ android:text="@string/l2" />
+ <EditText
+ android:id="@+id/t2"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="number"
+ android:layout_marginVertical="150dp"
+ android:layout_marginLeft="25dp"/>
+ <TextView
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginVertical="210dp"
+ android:layout_marginLeft="25dp"
+ android:text="@string/l3" />
+ <EditText
+ android:id="@+id/t3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:ems="10"
+ android:inputType="number"
+ android:layout_marginVertical="250dp"
+ android:layout_marginLeft="25dp"
+ />
+<Button
+ android:id="@+id/b1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:layout_marginVertical="325dp"
+ android:layout_marginLeft="25dp"
+ android:text="@string/l4" />
+</RelativeLayout>
+MainActivity.java
+package com.example.addition;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Button;
+public class MainActivity extends AppCompatActivity implements Button.OnClickListener
+{
+Button b1;
+EditText t1,t2,t3;
+ @Override
+ protected void onCreate(Bundle savedInstanceState)
+ {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ t1=(EditText)findViewById(R.id.t1);
+ t2=(EditText)findViewById(R.id.t2);
+ t3=(EditText)findViewById(R.id.t3);
+ b1=(Button)findViewById(R.id.b1);
+ b1.setOnClickListener(this);
+ }
+ @Override
+public void onClick(View v)
+ {
+ int a,b,c;
+ a=Integer.parseInt(t1.getText().toString());
+ b=Integer.parseInt(t2.getText().toString());
+ c=a+b;
+ t3.setText(c+"");
+ }
+}
